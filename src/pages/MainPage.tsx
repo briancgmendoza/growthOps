@@ -1,5 +1,4 @@
 import Button from "../components/Button";
-import Modal from "../components/Modal";
 import Form from "../components/Form";
 
 const MainPage = () => {
@@ -25,14 +24,14 @@ const MainPage = () => {
   return (
     <section>
       <h3 className="d-flex justify-content-center m-3 fw-bold">Daily Scrum</h3>
-
-      <table className="table table-stripped">
+      <table className="table table-stripped text-center">
         <thead>
           <tr>
             <th>Date</th>
             <th>What you did yesterday?</th>
             <th>Today's plan</th>
             <th>Blocker</th>
+            <th>Options</th>
           </tr>
         </thead>
 
@@ -50,7 +49,14 @@ const MainPage = () => {
                     onClick={() => {}}
                     className="btn btn-light mr-1"
                   >
-                    <i></i>
+                    <i className="bi bi-pencil-square"></i>
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => {}}
+                    className="btn btn-light mr-1"
+                  >
+                    <i className="bi bi-x-square"></i>
                   </Button>
                 </td>
               </tr>
@@ -62,15 +68,7 @@ const MainPage = () => {
           )}
         </tbody>
       </table>
-      <button
-        type="button"
-        className="btn btn-primary m-2 float-end"
-        data-bs-toggle="modal"
-        data-bs-target="#btnModal"
-        onClick={() => addWorkLog()}
-      >
-        Add Work log
-      </button>
+      <Form btnText="Add work log" />
     </section>
   );
 };
