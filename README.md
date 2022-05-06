@@ -1,4 +1,6 @@
 # growthOps
 For GrowthOps Exam simple form submission app
 
-Live Demo: https://react-growthops.web.app/ 
+Live Demo: 
+https://react-growthops.web.app/ 
+https://growth-ops-briancgmendoza.vercel.app/
