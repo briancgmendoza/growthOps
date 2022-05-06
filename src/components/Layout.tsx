@@ -3,7 +3,7 @@ import MainPage from "../pages/MainPage";
 
 const Layout = () => {
   return (
-    <main
+    <div
       className="d-flex 
         flex-column
         align-items-center
@@ -12,7 +12,7 @@ const Layout = () => {
     >
       <Banner />
       <MainPage />
-    </main>
+    </div>
   );
 };
 

@@ -50,9 +50,7 @@ const MainPage = () => {
         </div>
       ) : (
         <section>
-          <h3 className="d-flex justify-content-center m-3 fw-bold">
-            Daily Scrum
-          </h3>
+          <h3 className="text-center fw-bold">Daily Scrum</h3>
           <table className="table table-stripped text-center">
             <thead>
               <tr>
@@ -104,7 +102,8 @@ const MainPage = () => {
           <Button
             type="button"
             onClick={() => setShowModal(!showModal)}
-            className="btn btn-primary float-end"
+            className={`btn 
+            ${showModal ? "btn-danger" : "btn-primary"} float-end`}
           >
             {showModal ? "Close Form" : "Add work log"}
           </Button>
