@@ -1,9 +1,10 @@
 import * as React from "react";
+
 type Props = {
   type: "button" | "submit" | "reset";
   className: string;
   name?: string;
-  onClick?: (e: React.SyntheticEvent) => void | any;
+  onClick?: (e: React.SyntheticEvent) => void;
   children?: JSX.Element | string | React.ReactNode;
 };
 

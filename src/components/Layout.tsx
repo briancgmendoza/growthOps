@@ -1,4 +1,3 @@
-import * as React from "react";
 import Banner from "./Banner";
 import MainPage from "../pages/MainPage";
 
