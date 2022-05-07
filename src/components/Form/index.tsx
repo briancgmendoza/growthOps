@@ -42,45 +42,61 @@ const Form = ({ btnText, onClose }: Props) => {
   const renderDynamicForm = () => {
     return submittedData.map((input, index) => {
       return (
-        <div key={index} className="d-flex flex-column justify-content-center">
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            value={input.date}
-            onChange={(e) => handleFormChange(index, e)}
-            name="date"
-            id="date"
-            required
-          />
+        <div key={index}>
+          <div className="form-floating mb-3">
+            <input
+              type="date"
+              value={input.date}
+              onChange={(e) => handleFormChange(index, e)}
+              name="date"
+              id="date"
+              required
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="date">Date</label>
+          </div>
 
-          <label htmlFor="yesterdayWork">What you did yesterday?</label>
-          <input
-            type="text"
-            value={input.yesterdayWork}
-            onChange={(e) => handleFormChange(index, e)}
-            name="yesterdayWork"
-            id="yesterdayWork"
-            required
-          />
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              value={input.yesterdayWork}
+              onChange={(e) => handleFormChange(index, e)}
+              name="yesterdayWork"
+              id="yesterdayWork"
+              required
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="yesterdayWork">What you did yesterday?</label>
+          </div>
 
-          <label htmlFor="planToday">Today's plan</label>
-          <input
-            type="text"
-            value={input.planToday}
-            onChange={(e) => handleFormChange(index, e)}
-            name="planToday"
-            id="planToday"
-            required
-          />
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              value={input.planToday}
+              onChange={(e) => handleFormChange(index, e)}
+              name="planToday"
+              id="planToday"
+              required
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="planToday">Today's plan</label>
+          </div>
 
-          <label htmlFor="blocker">Blockers</label>
-          <input
-            type="text"
-            value={input.blocker}
-            onChange={(e) => handleFormChange(index, e)}
-            name="blocker"
-            id="blocker"
-          />
+          <div className="form-floating">
+            <input
+              type="text"
+              value={input.blocker}
+              onChange={(e) => handleFormChange(index, e)}
+              name="blocker"
+              id="blocker"
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="blocker">Blockers</label>
+          </div>
         </div>
       );
     });
@@ -88,7 +104,10 @@ const Form = ({ btnText, onClose }: Props) => {
 
   return (
     <Modal onClose={onClose}>
-      <form onSubmit={(values) => onSubmitHandler(values)}>
+      <form
+        onSubmit={(values) => onSubmitHandler(values)}
+        className="gy-2 gx-3"
+      >
         {renderDynamicForm()}
         <div>
           <button type="submit" className="btn btn-primary m-2 float-end">
