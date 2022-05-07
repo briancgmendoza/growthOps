@@ -16,7 +16,7 @@ const Backdrop = ({ onClose }: Props) => {
 
 const ModalOverlay = ({ children }: Props) => {
   return (
-    <div className="col-md-4" style={{ margin: "0 auto" }}>
+    <div className="w-75" style={{ maxWidth: "500px", margin: "0 auto" }}>
       <div>{children}</div>
     </div>
   );
