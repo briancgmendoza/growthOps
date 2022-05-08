@@ -1,15 +1,16 @@
 import * as React from "react";
 
-import Modal from "../Modal";
+import Button from "../Button";
 import { db } from "../../firebase/config";
 import { collection, addDoc } from "firebase/firestore";
 
 type Props = {
-  btnText: string;
+  btnText?: string;
+  btnSecText?: string;
   onClose?: (e: React.SyntheticEvent) => void;
 };
 
-const Form = ({ btnText, onClose }: Props) => {
+const Form = ({ btnText, btnSecText, onClose }: Props) => {
   const [submittedData, setSubmittedData] = React.useState([
     {
       date: "",
@@ -25,7 +26,6 @@ const Form = ({ btnText, onClose }: Props) => {
     await addDoc(dailyLogCollection, {
       ...submittedData,
     });
-    // For some reason my modal doesn't work, so just alert message.
     alert("Added successfully!");
     window.location.reload();
   };
@@ -103,19 +103,17 @@ const Form = ({ btnText, onClose }: Props) => {
   };
 
   return (
-    <Modal onClose={onClose}>
-      <form
-        onSubmit={(values) => onSubmitHandler(values)}
-        className="gy-2 gx-3"
-      >
-        {renderDynamicForm()}
-        <div>
-          <button type="submit" className="btn btn-primary m-2 float-end">
-            {btnText}
-          </button>
-        </div>
-      </form>
-    </Modal>
+    <form onSubmit={(values) => onSubmitHandler(values)} className="gy-2 gx-3">
+      {renderDynamicForm()}
+      <div className="float-end">
+        <Button type="submit" className="btn btn-success m-2">
+          {btnText}
+        </Button>
+        <Button type="button" className="btn btn-danger m-2" onClick={onClose}>
+          {btnSecText}
+        </Button>
+      </div>
+    </form>
   );
 };
 
