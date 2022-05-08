@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import Button from "../components/Button";
+import Modal from "../components/Modal";
 import Form from "../components/Form";
 import { db } from "../firebase/config";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
@@ -117,13 +118,18 @@ const MainPage = () => {
           <Button
             type="button"
             onClick={() => setShowModal(!showModal)}
-            className={`btn 
-            ${showModal ? "btn-danger" : "btn-primary"} float-end`}
+            className="btn btn-primary float-end"
           >
-            {showModal ? "Close Form" : "Add work log"}
+            Add Work Log
           </Button>
           {showModal && (
-            <Form btnText="Submit" onClose={() => setShowModal(false)} />
+            <Modal onClose={() => setShowModal(false)}>
+              <Form
+                btnText="Submit"
+                btnSecText="Close"
+                onClose={() => setShowModal(false)}
+              />
+            </Modal>
           )}
         </section>
       )}

@@ -1,22 +1,61 @@
+import * as React from "react";
 import ReactDOM from "react-dom";
 
 type Props = {
   onClose?: (e: React.SyntheticEvent) => void;
   children?: JSX.Element | string | React.ReactNode;
+  innerWidth?: number;
 };
 
-/**
- * This modal is entirely useless, it doesn't work the way I
- * want it.. might be a webpack config issue because
- * I'm not using postloader-css?
- */
 const Backdrop = ({ onClose }: Props) => {
-  return <div onClick={onClose} />;
+  return (
+    <div
+      className="position-fixed 
+        top-0 
+        left-0 
+        w-100 
+        h-100 
+        zindex-modal-backdrop"
+      onClick={onClose}
+      style={{ backgroundColor: "rgba(0, 0, 0, .75)" }}
+    />
+  );
 };
 
 const ModalOverlay = ({ children }: Props) => {
+  const [width, setWidth] = React.useState(window.innerWidth);
+
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   return (
-    <div className="w-75" style={{ maxWidth: "500px", margin: "0 auto" }}>
+    <div
+      /** Bootstrap modal and animation doesn't work
+       * data-mdb-toggle="animation"
+       * data-mdb-animation-reset="true"
+       * data-mdb-animation="fade-in-down"
+       *
+       * positioning in bootstrap isn't responsive based on
+       * the documentation, so I have to magically do it
+       * depending on innerWidth, because creating a css file
+       * with media queries seems to be a lot of work :P
+       */
+      className="position-relative
+      w-75
+      mx-auto
+      zindex-dropdown
+      fade-in-down"
+      style={{
+        maxWidth: "500px",
+        marginTop: `${width > 650 ? "-200px" : "-350px"}`,
+      }}
+    >
       <div>{children}</div>
     </div>
   );
