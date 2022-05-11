@@ -23,37 +23,21 @@ const Backdrop = ({ onClose }: Props) => {
 };
 
 const ModalOverlay = ({ children }: Props) => {
-  const [width, setWidth] = React.useState(window.innerWidth);
-
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-  };
-
-  React.useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-
   return (
     <div
       /** Bootstrap modal and animation doesn't work
        * data-mdb-toggle="animation"
        * data-mdb-animation-reset="true"
        * data-mdb-animation="fade-in-down"
-       *
-       * positioning in bootstrap isn't responsive based on
-       * the documentation, so I have to magically do it
-       * depending on innerWidth, because creating a css file
-       * with media queries seems to be a lot of work :P
        */
-      className="position-relative
+      className="position-fixed
+      top-50
+      start-50
+      translate-middle
       w-75
-      mx-auto
-      zindex-dropdown
-      fade-in-down"
+      zindex-dropdown"
       style={{
         maxWidth: "500px",
-        marginTop: `${width > 650 ? "-200px" : "-350px"}`,
       }}
     >
       <div>{children}</div>
