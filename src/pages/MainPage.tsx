@@ -70,7 +70,7 @@ const MainPage = () => {
                   <th scope="col">What you did yesterday?</th>
                   <th scope="col">Today's plan</th>
                   <th scope="col">Blocker</th>
-                  <th scope="col">Options</th>
+                  {width > 500 && <th scope="col">Options</th>}
                 </tr>
               </thead>
 
@@ -82,25 +82,17 @@ const MainPage = () => {
                       <td>{data[magicNumber].yesterdayWork}</td>
                       <td>{data[magicNumber].planToday}</td>
                       <td>{data[magicNumber].blocker}</td>
-                      <td>
-                        {/* 
-                          * Decided not to add edit function
-                        <Button
-                          type="button"
-                          onClick={() => {}}
-                          className={`btn btn-light ${width <= 1192 && "mb-1"}`}
-                        >
-                          <i className="bi bi-pencil-square"></i>
-                        </Button> */}
-                        <Button
-                          type="button"
-                          onClick={() => removeWorkLogHandler(data.id)}
-                          // className={`btn btn-light ${width >= 1193 && "mx-1"}`}
-                          className="btn btn-light"
-                        >
-                          <i className="bi bi-x-square"></i>
-                        </Button>
-                      </td>
+                      {width > 500 && (
+                        <td>
+                          <Button
+                            type="button"
+                            onClick={() => removeWorkLogHandler(data.id)}
+                            className="btn btn-light"
+                          >
+                            <i className="bi bi-x-square"></i>
+                          </Button>
+                        </td>
+                      )}
                     </tr>
                   ))}
               </tbody>
