@@ -75,7 +75,7 @@ const MainPage = () => {
               </thead>
 
               <tbody>
-                {datas.length > 0 ? (
+                {datas.length > 0 &&
                   datas.map((data: any, index: any) => (
                     <tr key={index}>
                       {width > 500 && <td>{data[magicNumber].date}</td>}
@@ -102,16 +102,7 @@ const MainPage = () => {
                         </Button>
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td className="fw-bold">Work log is Empty.</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                )}
+                  ))}
               </tbody>
             </table>
           </div>
